@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Test",
-    "slug": "Test",
+    "name": "SingPass",
+    "slug": "SingPass",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
