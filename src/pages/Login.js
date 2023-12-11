@@ -1,7 +1,35 @@
-/*import React, { useState, useEffect } from "react";
-import { View, Text, Pressable, TextInput } from "react-native"
+import React, { useState, useEffect } from "react";
+import { View, Text, Pressable, TextInput, TouchableOpacity, Image } from "react-native"
 import { Header, Icon, Input } from "react-native-elements";
+import spheader from '../../assets/image/spheader.png';
 
+
+const Login = ({ navigation, route }) => {
+    const onPressNavigate = () => {
+        navigation.navigate("Login")
+    }
+
+    return (
+        <View>
+            <View style={{ flex: 1, backgroundColor: 'red' }}>
+
+                <Image style={{ width: 250, height: 60, }}
+                    source={spheader}
+                />
+            </View>
+            <View style={{ flex: 1, backgroundColor: 'green'}}>
+                <Input>
+                </Input>
+            </View>
+            
+        </View>
+
+    );
+}
+
+export default Login
+
+/*
 const Page3 = ({ navigation, route }) => {
     const [name, setName] = useState("test")
     const [surname, setSurname] = useState("")
@@ -41,38 +69,5 @@ const Page3 = ({ navigation, route }) => {
     )
 }
 
-export default Page3*/
-
-
-import React from "react";
-import { StyleSheet, View } from "react-native";
-
-export default function App() {
-  return (
-    <>
-      <View style={styles.container}>
-        <View style={styles.square} />
-        <View style={styles.square} />
-        <View style={styles.square} />
-      </View>
-    </>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#7CA1B4",
-    flex: 1,
-    alignItems: "center", // ignore this - we'll come back to it
-    justifyContent: "center", // ignore this - we'll come back to it
-    flexDirection: "row",
-  },
-  square: {
-    backgroundColor: "#7cb48f",
-    width: 100,
-    height: 100,
-    margin: 4,
-  },
-});
-
-
+export default Page3
+*/
