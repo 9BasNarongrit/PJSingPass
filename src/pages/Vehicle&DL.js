@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text, Pressable, ScrollView, TouchableOpacity, Image } from "react-native"
-import { Header, Icon, Card } from "react-native-elements";
+import { Header, Icon, Card, ListItem } from "react-native-elements";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { useFonts } from 'expo-font';
@@ -9,8 +9,9 @@ import infoRedIcon from '../../assets/image/ired.png';
 import infoBlackIcon from '../../assets/image/iblack.png';
 
 
-const Personal = ({ navigation, route }) => {
-    //const [name, setName] = useState(0)
+const VehicleDL = ({ navigation, route }) => {
+    //const [expanded1, setExpanded1,] = useState(false)
+    //const [expanded2, setExpanded2,] = useState(false)
 
     useEffect(() => {
         // onChangeName()
@@ -52,7 +53,7 @@ const Personal = ({ navigation, route }) => {
                                 name="arrow-left"
                                 type="feather"
                                 color="black"
-                                size={ hp('2.8%')}
+                                size={hp('2.8%')}
                                 onPress={() => navigation.goBack()}
                             />
                         </View>
@@ -93,12 +94,12 @@ const Personal = ({ navigation, route }) => {
             <ScrollView>
 
                 <View style={styles.fonts}>
-                    <Text style={{ fontSize: hp('3%'), fontFamily: 'Poppins-Medium' }}>Personal</Text>
+                    <Text style={{ fontSize: hp('3%'), fontFamily: 'Poppins-Medium' }}>Vehicle & Driving Licence</Text>
                 </View>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'flex-start', paddingLeft: wp('6%') }}>
                     <Text style={{ fontSize: hp('1.8%'), fontFamily: 'Poppins-Regular', color: '#4f4f4f' }}>
-                        Last update on 09 Dec 2023
+                        Last update on 10 Dec 2023
                     </Text>
                     <Image
                         source={infoBlackIcon}
@@ -108,25 +109,55 @@ const Personal = ({ navigation, route }) => {
 
                 <View>
 
-                    <Text style={styles.title}>Contact</Text>
+                    <Text style={styles.title}>Driving Licence</Text>
 
                     <View style={styles.views}>
 
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text style={styles.txt1}>SINGPASS REGISTERED CONTACT</Text>
-                            <TouchableOpacity>
-                                <Icon
-                                    name="edit-2"
-                                    type="feather"
-                                    color="black"
-                                    size={18} />
-                            </TouchableOpacity>
+                            <Text style={styles.txt1}>QUALIFIED DRIVING LICENCE</Text>
+
                         </View>
 
-                        <Text style={styles.txt2}>Mobile Number</Text>
-                        <Text style={styles.txt3}>80492583</Text>
-                        <Text style={styles.txt2}>Email Address</Text>
-                        <Text style={styles.txt3}>YONGJIESHENG5353@GMAIL.COM</Text>
+                        <Text style={styles.txt2}>Class/Issue Date</Text>
+                        <Text style={styles.txt3}>3 / 03 SEP 2009</Text>
+                        <Text style={styles.txt2}>Status</Text>
+                        <Text style={styles.txt3}>VALID</Text>
+                        <Text style={styles.txt2}>Certicicate of Merit Status</Text>
+                        <Text style={styles.txt3}>NOT ELIGIBLE</Text>
+                        <Text style={styles.txt2}>Total Demerit Points</Text>
+                        <Text style={styles.txt3}>4</Text>
+                        <Text style={styles.txt2}>Photocard Serial Number</Text>
+                        <Text style={styles.txt3}>002755739D</Text>
+
+                    </View>
+
+
+                    <View style={styles.views}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                            <Text style={styles.txt1}>PROVISIONAL DRIVING LICENCE</Text>
+                        </View>
+                        <Text style={styles.txt3}>NOT HOLDING</Text>
+                    </View>
+
+                    <Text style={styles.title}>Vehicle Ownership</Text>
+                    <View style={styles.views}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                            <Text style={styles.txt1}>VEHICLE ASSET</Text>
+                        </View>
+                        <Text style={styles.txt2}>Vehicle Number</Text>
+                        <Text style={styles.txt3}>SNJ6253D</Text>
+                        <Text style={styles.txt2}>Chassis Number</Text>
+                        <Text style={styles.txt3}>WBAKB22080C951540</Text>
+                        <Text style={styles.txt2}>IU Label Number</Text>
+                        <Text style={styles.txt3}>1124393496</Text>
+                        <Text style={styles.txt2}>Road Tax Expiry Date</Text>
+                        <Text style={styles.txt3}>06 MAR 2024</Text>
+
+
+                        <TouchableOpacity style={styles.info}>
+
+                            <Text style={styles.texinfo}>View all</Text>
+                        </TouchableOpacity>
 
                         <TouchableOpacity style={styles.info}>
                             <Image
@@ -138,79 +169,23 @@ const Personal = ({ navigation, route }) => {
 
                     </View>
 
-
-                    <View style={styles.views}>
-
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text style={styles.txt1}>ADDRESS</Text>
-                        </View>
-
-                        <Text style={styles.txt2}>Registered Address</Text>
-                        <Text style={styles.txt3}>110A DEPOT ROAD #03-621 SINGAPORE 101110</Text>
-                        <Text style={styles.txt2}>Type of HDB</Text>
-                        <Text style={styles.txt3}>4-ROOM FLAT (HDB)</Text>
-
-                        <TouchableOpacity style={styles.info}>
-                            <Image
-                                source={infoRedIcon}
-                                style={{ width: 18, height: 18, marginRight: 8 }}
-                            />
-                            <Text style={styles.texinfo}>View explanatory notes</Text>
-                        </TouchableOpacity>
-
-                    </View>
-
-
-                    <Text style={styles.title}>Singapore Passport</Text>
-                    <View style={styles.views}>
-
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text style={styles.txt1}>SINGAPORE INTERNATIONAL PASSPORT</Text>
-                        </View>
-
-                        <Text style={styles.txt2}>Passport Number</Text>
-                        <Text style={styles.txt3}>K4515703Z</Text>
-                        <Text style={styles.txt2}>Passport Expiry Date</Text>
-                        <Text style={styles.txt3}>01 NOV 2033</Text>
-
-                    </View>
-
-
-                    <Text style={styles.title}>Demographic Information</Text>
-                    <View style={styles.views}>
-
-                        <Text style={styles.txt2}>Country / Place of Birth</Text>
-                        <Text style={styles.txt3}>SINGAPORE</Text>
-                        <Text style={styles.txt2}>Race</Text>
-                        <Text style={styles.txt3}>CHINESE</Text>
-                        <Text style={styles.txt2}>Dialect</Text>
-                        <Text style={styles.txt3}>KHEK</Text>
-
-                    </View>
                     <View style={{ paddingVertical: hp('2.5%') }}></View>
                 </View>
             </ScrollView>
-
-            {/* 
-                <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-                    <Text style={{ paddingVertical: 10 }}>Name : {name}</Text>
-                    <TextInput onChangeText={(value) => setName(value)} style={{ borderWidth: 1, borderColor: "black", width: "100%" }} />
-                </View>
-                */}
 
         </SafeAreaProvider>
 
     )
 }
 
-export default Personal
+export default VehicleDL
 
 
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#f4f4f4',
         flex: 1,
-       
+
     },
     headerLeaf: {
         display: 'flex',
@@ -269,12 +244,13 @@ const styles = StyleSheet.create({
         paddingTop: hp('3%'),
         paddingBottom: hp('5%'),
         paddingRight: wp('6%')
+
     },
     iconInfo: {
-        width: wp('5.2%'), 
+        width: wp('5.2%'),
         height: wp('5.2%'),
-        marginHorizontal: wp('1%'), 
-        
+        marginHorizontal: wp('1%'),
+
     },
     texinfo: {
         fontSize: wp('3.5%'),
