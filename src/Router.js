@@ -21,18 +21,23 @@ const Router = () => {
         <NavigationContainer>
             <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
                 <Stack.Screen name="Logo" component={Logo} />
-                <Stack.Screen name="Login" component={Login}/>
+                <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Home" component={Home} />
-                <Stack.Screen name="Page3" component={Page3}/>
+                <Stack.Screen name="Page3" component={Page3} />
                 {/*<Stack.Screen name="Documents" component={Documents}/>*/}
-                <Stack.Screen name="Personal" component={Personal}/>
+                <Stack.Screen name="Personal" component={Personal} options={{
+                    headerShown: false,
+                    presentation: 'modal',
+                    animationTypeForReplace: 'push',
+                    animation: 'slide_from_right'
+                }} />
                 <Stack.Screen name="Finance" component={Finance}/>
-                <Stack.Screen name="VehicleDL" component={VehicleDL}/>
-                <Stack.Screen name="Family" component={Family}/>
-                <Stack.Screen name="Education" component={Education}/>
-                <Stack.Screen name="Property" component={Property}/>
-                <Stack.Screen name="RegistersOE" component={RegistersOE}/>
-                
+                <Stack.Screen name="VehicleDL" component={VehicleDL} />
+                <Stack.Screen name="Family" component={Family} />
+                <Stack.Screen name="Education" component={Education} />
+                <Stack.Screen name="Property" component={Property} />
+                <Stack.Screen name="RegistersOE" component={RegistersOE} />
+
 
             </Stack.Navigator>
         </NavigationContainer>
