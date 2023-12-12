@@ -5,9 +5,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { useFonts } from 'expo-font';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
-import Card1 from '../../assets/image/card1.png';
+
 import Carousel from 'react-native-snap-carousel-v4'
 import { Ionicons } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
+
+import Card1 from '../../assets/image/card1.png';
+import Card2 from '../../assets/image/card2.png';
+
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get("window")
 
@@ -60,20 +65,27 @@ const Home = ({ navigation, route }) => {
     }
 
     const UserCardView = ({ }) => (
-        <View style={{ height: screenHeight * 0.32, marginBottom: 10 }}>
+        <View style={{ height: screenHeight * hp('0.08%'), marginBottom: hp('2%') }}>
             <Carousel
                 key="card_carousel_"
                 ref={carouselRef}
-                layout="default"
+                layout='default'
                 data={cardList}
                 renderItem={_renderCardItem}
                 sliderWidth={screenWidth}
-                itemWidth={screenWidth * 0.8}
-            // onSnapToItem={setCurrentCardIndex}
+                itemWidth={screenWidth * 0.85}
+             //onSnapToItem={setCurrentCardIndex}
             />
             {
                 cardList[currentCardIndex]?.type != "blank" &&
-                <TouchableOpacity onPress={onPressBarcode} style={{ justifyContent: "center", alignItems: "center", paddingVertical: 10, flexDirection: "row" }}>
+                <TouchableOpacity onPress={onPressBarcode}
+                    style={{
+                        justifyContent: "center",
+                        alignItems: "center",
+                        paddingVertical: 10,
+                        flexDirection: "row"
+                    }}>
+
                     <Ionicons name="md-barcode-outline" size={24} color="black" style={{ marginRight: 10 }} />
                     <Text style={{ fontSize: 12, fontFamily: 'Poppins-Medium', color: 'red', marginTop: 3 }}>Show barcode</Text>
                 </TouchableOpacity>
@@ -89,7 +101,8 @@ const Home = ({ navigation, route }) => {
                     source={Card1}
                     style={{ width: 320, height: 200, alignSelf: 'center' }}
                 />
-            )
+                
+            )           
         }
         return (
             <View key={item?.id} style={{ width: 320, height: 200, borderRadius: 16, backgroundColor: "#222222", justifyContent: "space-between", alignItems: "center", padding: 20 }}>
@@ -112,6 +125,7 @@ const Home = ({ navigation, route }) => {
 
     return (
         <SafeAreaView style={styles.container}>
+            <StatusBar />
             <ScrollView>
                 <View>
                     <Icon style={{ paddingTop: 10, paddingBottom: 10, paddingRight: 20, alignSelf: 'flex-end' }}
@@ -256,7 +270,7 @@ const Home = ({ navigation, route }) => {
                                 <View>
                                     <TouchableOpacity style={styles.btnMenu}
                                         onPress={() => navigation.navigate('Education')}
-                                        >
+                                    >
                                         <Icon
                                             name='file-directory'
                                             type='octicon'
@@ -270,7 +284,7 @@ const Home = ({ navigation, route }) => {
                                 <View>
                                     <TouchableOpacity style={styles.btnMenu}
                                         onPress={() => navigation.navigate('Property')}
-                                        >
+                                    >
                                         <Icon
                                             name='file-directory'
                                             type='octicon'
@@ -284,7 +298,7 @@ const Home = ({ navigation, route }) => {
                                 <View>
                                     <TouchableOpacity style={styles.btnMenu}
                                         onPress={() => navigation.navigate('RegistersOE')}
-                                        >
+                                    >
                                         <Icon
                                             name='file-directory'
                                             type='octicon'

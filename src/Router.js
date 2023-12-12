@@ -1,6 +1,9 @@
 import React from "react"
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import { StyleSheet } from "react-native";
+
 import Logo from "./pages/Logo"
 import Login from "./pages/Login";
 import Home from "./pages/Home";
@@ -27,11 +30,11 @@ const Router = () => {
                 {/*<Stack.Screen name="Documents" component={Documents}/>*/}
                 <Stack.Screen name="Personal" component={Personal} options={{
                     headerShown: false,
-                    presentation: 'modal',
+                    presentation: 'containedTransparentModal',
                     animationTypeForReplace: 'push',
                     animation: 'slide_from_right'
                 }} />
-                <Stack.Screen name="Finance" component={Finance}/>
+                <Stack.Screen name="Finance" component={Finance} options={styles.styleOptions}/>
                 <Stack.Screen name="VehicleDL" component={VehicleDL} />
                 <Stack.Screen name="Family" component={Family} />
                 <Stack.Screen name="Education" component={Education} />
@@ -47,3 +50,12 @@ const Router = () => {
 export default Router
 
 //teejtjt
+
+const styles = StyleSheet.create({
+    styleOptions: {
+        headerShown: false,
+        presentation: 'modal',
+        animationTypeForReplace: 'push',
+        animation: 'slide_from_right'
+    },
+})
