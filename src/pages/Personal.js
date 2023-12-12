@@ -112,14 +112,14 @@ const Personal = ({ navigation, route }) => {
 
                     <View style={styles.views}>
 
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingRight: wp('6%') }}>
                             <Text style={styles.txt1}>SINGPASS REGISTERED CONTACT</Text>
                             <TouchableOpacity>
                                 <Icon
                                     name="edit-2"
                                     type="feather"
                                     color="black"
-                                    size={18} />
+                                    size={wp('5%')} />
                             </TouchableOpacity>
                         </View>
 
@@ -230,9 +230,9 @@ const styles = StyleSheet.create({
 
     },
     title: {
-        fontSize: hp('2%'),
+        fontSize: hp('2.4%'),
         fontFamily: 'Poppins-SemiBold',
-        marginTop: hp('4%'),
+        marginTop: hp('3%'),
         paddingLeft: wp('6%')
     },
     txt1: {
@@ -251,7 +251,7 @@ const styles = StyleSheet.create({
     txt3: {
         fontSize: hp('2%'),
         fontFamily: 'Poppins-Medium',
-        paddingBottom: hp('3%'),
+        paddingBottom: hp('2.8%'),
     },
     views: {
         backgroundColor: 'white',
@@ -263,12 +263,13 @@ const styles = StyleSheet.create({
     },
     info: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignSelf: 'center',
-        alignItems: 'flex-start',
+        justifyContent: 'center',
+        //alignSelf: 'center',
+        //alignItems: 'flex-start',
         paddingTop: hp('3%'),
         paddingBottom: hp('5%'),
-        paddingRight: wp('6%')
+        paddingRight: wp('8.5%')
+        
     },
     iconInfo: {
         width: wp('5.2%'), 
@@ -278,7 +279,7 @@ const styles = StyleSheet.create({
     },
     texinfo: {
         fontSize: wp('3.5%'),
-        fontFamily: 'Poppins-SemiBold',
+        fontFamily: 'Poppins-Medium',
         color: '#d80b16',
     },
 

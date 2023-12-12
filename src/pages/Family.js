@@ -114,15 +114,8 @@ const Family = ({ navigation, route }) => {
 
                         <Text style={styles.txt2}>Marital Status</Text>
                         <Text style={styles.txt3}>SINGLE</Text>
-                        <Text style={styles.txt2}>Date of Marriage</Text>
-                        <Text style={styles.txt3}></Text>
-                        <Text style={styles.txt2}>Marriage Certificate Number</Text>
-                        <Text style={styles.txt3}></Text>
-                        <Text style={styles.txt2}>Country / Place of Marriage</Text>
-                        <Text style={styles.txt3}></Text>
                         
-
-
+           
                         <TouchableOpacity style={styles.info}>
                             <Image
                                 source={infoRedIcon}
@@ -136,25 +129,26 @@ const Family = ({ navigation, route }) => {
                     <Text style={styles.title}>Local Registered Birth Records</Text>
                     <View style={styles.views}>
                         <Text style={styles.txt2}>Name</Text>
-                        <Text style={styles.txt3}>YONG BO WEN ALEXANDER</Text>
-                        <Text style={styles.txt2}>Birth Certificate Number</Text>
-                        <Text style={styles.txt3}>T1709902C</Text>
+                        <Text style={styles.txt3}>ELIZABETH YONG</Text>
+
+                        <Text style={styles.txt2}>NRIC No. / FN</Text>
+                        <Text style={styles.txt3}>T1291815H</Text>
                         <Text style={styles.txt2}>Sex</Text>
-                        <Text style={styles.txt3}>MALE</Text>
+                        <Text style={styles.txt3}>FEMALE</Text>
                         <Text style={styles.txt2}>Date of Birth</Text>
-                        <Text style={styles.txt3}>03 APR 2017</Text>
-                        <Text style={styles.txt2}>Tim of Birth</Text>
-                        <Text style={styles.txt3}>9:22 AM</Text>
+                        <Text style={styles.txt3}>25 DEC 2012</Text>
                         <Text style={styles.txt2}>Race</Text>
                         <Text style={styles.txt3}>CHINESE</Text>
-                        <Text style={styles.txt2}>Secondary Race</Text>
-                        <Text style={styles.txt3}>THAI</Text>
-                        <Text style={styles.txt2}>Dialect</Text>
-                        <Text style={styles.txt3}>KHEK</Text>
-                        <Text style={styles.txt2}>For Official Use</Text>
-                        <Text style={styles.txt3}>THE CHID IS A CITIZEN OF SINGAPORE AT THE TIME OF BIRTH</Text>
+                        <Text style={styles.txt2}>Latest Residential Status</Text>
+                        <Text style={styles.txt3}>CITIZEN</Text>
+                        <Text style={styles.txt2}>Country / Place of Birth</Text>
+                        <Text style={styles.txt3}>THAILAND</Text>
+                        <Text style={styles.txt2}>Nationnality / Citizenship</Text>
+                        <Text style={styles.txt3}>SINGAPORE CITIZEN</Text>
+                        <Text style={styles.txt2}>SC/PR/LTVP Grant Date</Text>
+                        <Text style={styles.txt3}>21 FEB 2014</Text>
                         <Text style={styles.txt2}>Fulfilled Preschool Vaccination Minimum Requirement</Text>
-                        <Text style={styles.txt3}>YES</Text>
+                        <Text style={styles.txt3}>NOT APPLICABLE</Text>
 
                         <TouchableOpacity style={styles.info}>
                             <Image
@@ -209,9 +203,9 @@ const styles = StyleSheet.create({
 
     },
     title: {
-        fontSize: hp('2%'),
+        fontSize: hp('2.4%'),
         fontFamily: 'Poppins-SemiBold',
-        marginTop: hp('4%'),
+        marginTop: hp('3%'),
         paddingLeft: wp('6%')
     },
     txt1: {
@@ -230,7 +224,7 @@ const styles = StyleSheet.create({
     txt3: {
         fontSize: hp('2%'),
         fontFamily: 'Poppins-Medium',
-        paddingBottom: hp('3%'),
+        paddingBottom: hp('2.8%'),
     },
     views: {
         backgroundColor: 'white',
@@ -242,12 +236,12 @@ const styles = StyleSheet.create({
     },
     info: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignSelf: 'center',
-        alignItems: 'flex-start',
-        paddingTop: hp('1%'),
+        justifyContent: 'center',
+        //alignSelf: 'center',
+        //alignItems: 'flex-start',
+        paddingTop: hp('3%'),
         paddingBottom: hp('5%'),
-        paddingRight: wp('6%')
+        paddingRight: wp('8.5%')
     },
     iconInfo: {
         width: wp('5.2%'),
@@ -257,7 +251,7 @@ const styles = StyleSheet.create({
     },
     texinfo: {
         fontSize: wp('3.5%'),
-        fontFamily: 'Poppins-SemiBold',
+        fontFamily: 'Poppins-Medium',
         color: '#d80b16',
     },
 

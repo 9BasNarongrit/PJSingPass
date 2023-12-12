@@ -153,8 +153,12 @@ const VehicleDL = ({ navigation, route }) => {
                         <Text style={styles.txt2}>Road Tax Expiry Date</Text>
                         <Text style={styles.txt3}>06 MAR 2024</Text>
 
-
-                        <TouchableOpacity style={styles.info}>
+                        <TouchableOpacity style={{
+                            alignItems: 'center',
+                            paddingRight: wp('7%'),
+                            paddingTop: wp('3%'),
+                            paddingBottom: hp('2%')
+                        }}>
 
                             <Text style={styles.texinfo}>View all</Text>
                         </TouchableOpacity>
@@ -205,9 +209,9 @@ const styles = StyleSheet.create({
 
     },
     title: {
-        fontSize: hp('2%'),
+        fontSize: hp('2.4%'),
         fontFamily: 'Poppins-SemiBold',
-        marginTop: hp('4%'),
+        marginTop: hp('3%'),
         paddingLeft: wp('6%')
     },
     txt1: {
@@ -226,7 +230,7 @@ const styles = StyleSheet.create({
     txt3: {
         fontSize: hp('2%'),
         fontFamily: 'Poppins-Medium',
-        paddingBottom: hp('3%'),
+        paddingBottom: hp('2.8%'),
     },
     views: {
         backgroundColor: 'white',
@@ -238,13 +242,12 @@ const styles = StyleSheet.create({
     },
     info: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignSelf: 'center',
-        alignItems: 'flex-start',
+        justifyContent: 'center',
+        //alignSelf: 'center',
+        //alignItems: 'flex-start',
         paddingTop: hp('3%'),
         paddingBottom: hp('5%'),
-        paddingRight: wp('6%')
-
+        paddingRight: wp('8.5%')
     },
     iconInfo: {
         width: wp('5.2%'),
@@ -254,7 +257,7 @@ const styles = StyleSheet.create({
     },
     texinfo: {
         fontSize: wp('3.5%'),
-        fontFamily: 'Poppins-SemiBold',
+        fontFamily: 'Poppins-Medium',
         color: '#d80b16',
     },
 

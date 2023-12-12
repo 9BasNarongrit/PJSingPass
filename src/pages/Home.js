@@ -207,7 +207,7 @@ const Home = ({ navigation, route }) => {
 
                                 <View>
                                     <TouchableOpacity style={styles.btnMenu}
-                                        //onPress={() => navigation.navigate('')}
+                                        onPress={() => navigation.navigate('Education')}
                                         >
                                         <Icon
                                             name='file-directory'
@@ -221,7 +221,7 @@ const Home = ({ navigation, route }) => {
 
                                 <View>
                                     <TouchableOpacity style={styles.btnMenu}
-                                        //onPress={() => navigation.navigate('')}
+                                        onPress={() => navigation.navigate('Property')}
                                         >
                                         <Icon
                                             name='file-directory'
@@ -235,7 +235,7 @@ const Home = ({ navigation, route }) => {
 
                                 <View>
                                     <TouchableOpacity style={styles.btnMenu}
-                                        //onPress={() => navigation.navigate('')}
+                                        onPress={() => navigation.navigate('RegistersOE')}
                                         >
                                         <Icon
                                             name='file-directory'

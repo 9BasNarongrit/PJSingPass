@@ -10,6 +10,9 @@ import Personal from "./pages/Personal";
 import Finance from "./pages/Finance";
 import VehicleDL from "./pages/Vehicle&DL";
 import Family from "./pages/Family";
+import Education from "./pages/Education";
+import Property from "./pages/Property";
+import RegistersOE from "./pages/RegistersOfElectors";
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +29,9 @@ const Router = () => {
                 <Stack.Screen name="Finance" component={Finance}/>
                 <Stack.Screen name="VehicleDL" component={VehicleDL}/>
                 <Stack.Screen name="Family" component={Family}/>
+                <Stack.Screen name="Education" component={Education}/>
+                <Stack.Screen name="Property" component={Property}/>
+                <Stack.Screen name="RegistersOE" component={RegistersOE}/>
                 
 
             </Stack.Navigator>
