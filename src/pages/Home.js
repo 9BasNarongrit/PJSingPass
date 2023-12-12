@@ -1,19 +1,42 @@
-import React, { useEffect } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, TouchableOpacity, Image, ScrollView } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { StyleSheet, View, TouchableOpacity, Image, ScrollView, Dimensions } from 'react-native';
 import { Header, Icon, Input, Text, Button, Card } from "react-native-elements";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Col, Row, Grid } from 'react-native-easy-grid';
-import Swiper from 'react-native-swiper';
 import { useFonts } from 'expo-font';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
 import Card1 from '../../assets/image/card1.png';
+import Carousel from 'react-native-snap-carousel-v4'
+import { Ionicons } from '@expo/vector-icons';
+
+const { width: screenWidth, height: screenHeight } = Dimensions.get("window")
 
 const Home = ({ navigation, route }) => {
+    const [cardList, setCardList] = useState([
+        {
+            id: "01",
+            type: "nric",
+            no: "S****031Z",
+            img_url: "https://cdn-icons-png.flaticon.com/512/21/21104.png",
+        },
+        {
+            id: "02",
+            type: "driving",
+            no: "S****031Z",
+            img_url: "https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg",
+        },
+        {
+            id: "03",
+            type: "blank",
+            no: "",
+            img_url: "https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg",
+        },
+    ])
+    const carouselRef = useRef(null)
+    const [currentCardIndex, setCurrentCardIndex] = useState(0)
+
     const onPressNavigate = () => {
         navigation.navigate("Login")
-       
-
     }
     /*
         const [fontsLoaded] = useFonts({
@@ -21,21 +44,73 @@ const Home = ({ navigation, route }) => {
         });*/
 
     const [fontsLoaded, fontError] = useFonts({
-
         'Poppins-ExtraLight': require('../../assets/fonts/Poppins-ExtraLight.ttf'),
         'Poppins-Light': require('../../assets/fonts/Poppins-Light.ttf'),
         'Poppins-Medium': require('../../assets/fonts/Poppins-Medium.ttf'),
         'Poppins-Regular': require('../../assets/fonts/Poppins-Regular.ttf'),
         'Poppins-SemiBold': require('../../assets/fonts/Poppins-SemiBold.ttf'),
-
     });
 
     if (!fontsLoaded && !fontError) {
         return null;
     }
 
-    return (
+    const onPressBarcode = () => {
+        console.log("Barcode pressed!")
+    }
 
+    const UserCardView = ({ }) => (
+        <View style={{ height: screenHeight * 0.32, marginBottom: 10 }}>
+            <Carousel
+                key="card_carousel_"
+                ref={carouselRef}
+                layout="default"
+                data={cardList}
+                renderItem={_renderCardItem}
+                sliderWidth={screenWidth}
+                itemWidth={screenWidth * 0.8}
+            // onSnapToItem={setCurrentCardIndex}
+            />
+            {
+                cardList[currentCardIndex]?.type != "blank" &&
+                <TouchableOpacity onPress={onPressBarcode} style={{ justifyContent: "center", alignItems: "center", paddingVertical: 10, flexDirection: "row" }}>
+                    <Ionicons name="md-barcode-outline" size={24} color="black" style={{ marginRight: 10 }} />
+                    <Text style={{ fontSize: 12, fontFamily: 'Poppins-Medium', color: 'red', marginTop: 3 }}>Show barcode</Text>
+                </TouchableOpacity>
+            }
+        </View>
+    )
+
+    const _renderCardItem = ({ item, index }) => {
+        if (item?.type != "blank") {
+            return (
+                <Image
+                    key={item?.id}
+                    source={Card1}
+                    style={{ width: 320, height: 200, alignSelf: 'center' }}
+                />
+            )
+        }
+        return (
+            <View key={item?.id} style={{ width: 320, height: 200, borderRadius: 16, backgroundColor: "#222222", justifyContent: "space-between", alignItems: "center", padding: 20 }}>
+                <View>
+                    <Text style={{ fontSize: 12, fontFamily: 'Poppins-Regular', color: 'white', textAlign: "center" }}>These are government-issued cards{"\n"}that you can use to prove your{"\n"}identity.</Text>
+                    <Text style={{ fontSize: 12, fontFamily: 'Poppins-Medium', color: 'white', textAlign: "center" }}>More cards coming soon!</Text>
+                </View>
+                <Text style={{ fontSize: 9, fontFamily: 'Poppins-Regular', color: 'red', textAlign: "center" }}>Tap on this card to find out more</Text>
+            </View>
+        )
+    }
+
+    const getCardTitleText = (item) => {
+        switch (item?.type) {
+            case "nric": return "NRIC";
+            case "driving": return "Driving Licence";
+            default: return "What is this?";
+        }
+    }
+
+    return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
                 <View>
@@ -78,33 +153,17 @@ const Home = ({ navigation, route }) => {
                         </TouchableOpacity>
                     </View>
 
-                    <Grid style={{ backgroundColor: 'blue', marginHorizontal: 20, alignItems: 'flex-start', marginVertical: 10 }}>
-                        <Row>
-                            <Button
-                                title={'NRIC'}
-                            />
-                            <View style={styles.btnCard}>
-                                <Text style={{ fontSize: 10, fontFamily: 'Poppins-Regular' }}>NRIC</Text>
-                            </View>
-                            <View style={styles.btnCard}>
-                                <Text style={{ fontSize: 10, fontFamily: 'Poppins-Regular' }}>NRIC</Text>
-                            </View>
-                            <View style={styles.btnCard}>
-                                <Text style={{ fontSize: 10, fontFamily: 'Poppins-Regular' }}>NRIC</Text>
-                            </View>
-                        </Row>
-                    </Grid>
+                    <View style={{ paddingHorizontal: 20, flexDirection: "row", alignItems: "center", marginVertical: 10 }}>
+                        {
+                            cardList.map((item, index) => (
+                                <TouchableOpacity key={`${index}_${item}`} onPress={() => { }} style={{ paddingHorizontal: 12, paddingVertical: 4, borderRadius: 8, backgroundColor: index == currentCardIndex ? "red" : "#E3E3E3", marginRight: 10 }}>
+                                    <Text style={{ fontSize: 12, fontFamily: 'Poppins-Regular', color: index == currentCardIndex ? "white" : 'black' }}>{getCardTitleText(item)}</Text>
+                                </TouchableOpacity>
+                            ))
+                        }
+                    </View>
 
-                    <Swiper style={{ alignSelf: 'center', height: 200 }}>
-                        <Card style={{ backgroundColor: 'red' }}>
-                            <Image
-                                source={Card1}
-                                style={{ width: 320, height: 200, alignSelf: 'center' }}
-                            />
-                        </Card>
-                    </Swiper>
-
-
+                    <UserCardView />
 
                 </View>
 
@@ -118,17 +177,6 @@ const Home = ({ navigation, route }) => {
                         </TouchableOpacity>
                     </View>
 
-                    {/* 
-                    <Swiper
-                        style={{ backgroundColor: 'black', height: 120, paddingVertical: 20 }}
-                        showsButtons={false}
-                        showsPagination={false}
-                        loop={false}
-                    >
-
-                    </Swiper>*/}
-
-
                     <ScrollView
                         horizontal={true}
                         showsVerticalScrollIndicator={false}
@@ -140,8 +188,8 @@ const Home = ({ navigation, route }) => {
 
                                 <View>
                                     <TouchableOpacity style={styles.btnMenu}
-                                        //onPress={() => navigation.navigate('')}
-                                        >
+                                    //onPress={() => navigation.navigate('')}
+                                    >
                                         <Icon
                                             name='file-directory'
                                             type='octicon'
@@ -189,7 +237,7 @@ const Home = ({ navigation, route }) => {
                                         />
                                     </TouchableOpacity>
                                     <Text style={styles.fontMenu}>     Vehicle & {'\n'}
-                                     Driving Licence</Text>
+                                        Driving Licence</Text>
                                 </View>
 
                                 <View>
@@ -207,8 +255,8 @@ const Home = ({ navigation, route }) => {
 
                                 <View>
                                     <TouchableOpacity style={styles.btnMenu}
-                                        //onPress={() => navigation.navigate('')}
-                                        >
+                                    //onPress={() => navigation.navigate('')}
+                                    >
                                         <Icon
                                             name='file-directory'
                                             type='octicon'
@@ -221,8 +269,8 @@ const Home = ({ navigation, route }) => {
 
                                 <View>
                                     <TouchableOpacity style={styles.btnMenu}
-                                        //onPress={() => navigation.navigate('')}
-                                        >
+                                    //onPress={() => navigation.navigate('')}
+                                    >
                                         <Icon
                                             name='file-directory'
                                             type='octicon'
@@ -235,8 +283,8 @@ const Home = ({ navigation, route }) => {
 
                                 <View>
                                     <TouchableOpacity style={styles.btnMenu}
-                                        //onPress={() => navigation.navigate('')}
-                                        >
+                                    //onPress={() => navigation.navigate('')}
+                                    >
                                         <Icon
                                             name='file-directory'
                                             type='octicon'
@@ -245,13 +293,13 @@ const Home = ({ navigation, route }) => {
                                         />
                                     </TouchableOpacity>
                                     <Text style={styles.fontMenu}> Registers {'\n'}
-                                    of Electors</Text>
+                                        of Electors</Text>
                                 </View>
 
                                 <View>
                                     <TouchableOpacity style={styles.btnMenu}
-                                        //onPress={() => navigation.navigate('')}
-                                        >
+                                    //onPress={() => navigation.navigate('')}
+                                    >
                                         <Icon
                                             name='file-directory'
                                             type='octicon'
@@ -267,10 +315,68 @@ const Home = ({ navigation, route }) => {
                     </ScrollView>
                 </View>
 
+                <View style={{ marginVertical: 10 }}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 20, paddingVertical: 10 }}>
+                        <Text style={{ fontSize: 14, fontFamily: 'Poppins-Medium', color: 'black' }}>Favourites</Text>
+                        <TouchableOpacity>
+                            <Text style={{ fontSize: 12, fontFamily: 'Poppins-Medium', color: '#d80b16' }}>Edit Favourites</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ paddingHorizontal: 25, paddingVertical: 10, flexDirection: "row", justifyContent: "space-between" }}>
+                        <TouchableOpacity>
+                            <Icon
+                                name='file-directory'
+                                type='octicon'
+                                color='red'
+                                size={25}
+                            />
+                            <Text style={styles.fontMenu}>CPF Website</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Icon
+                                name='file-directory'
+                                type='octicon'
+                                color='red'
+                                size={25}
+                            />
+                            <Text style={styles.fontMenu}>HealthHub</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Icon
+                                name='file-directory'
+                                type='octicon'
+                                color='red'
+                                size={25}
+                            />
+                            <Text style={styles.fontMenu}>MyICA</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+                <View style={{ marginVertical: 10 }}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 20, paddingVertical: 10 }}>
+                        <Text style={{ fontSize: 14, fontFamily: 'Poppins-Medium', color: 'black' }}>Last used shortcuts</Text>
+                        <View />
+                    </View>
+                    <View style={{ paddingHorizontal: 25, paddingVertical: 10, flexDirection: "row", justifyContent: "space-between" }}>
+                        <TouchableOpacity>
+                            <Icon
+                                name='file-directory'
+                                type='octicon'
+                                color='red'
+                                size={25}
+                            />
+                            <Text style={styles.fontMenu}>CPF Website</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+                <View style={{ justifyContent: "center", alignItems: "center", paddingTop: 10, marginBottom: 40 }}>
+                    <TouchableOpacity>
+                        <Text style={{ fontSize: 14, fontFamily: 'Poppins-Medium', color: 'red' }}>View all shortcuts</Text>
+                    </TouchableOpacity>
+                </View>
             </ScrollView>
         </SafeAreaView>
-
-
     );
 }
 
