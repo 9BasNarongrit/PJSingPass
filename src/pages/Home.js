@@ -22,19 +22,19 @@ const Home = ({ navigation, route }) => {
             id: "01",
             type: "nric",
             no: "S****031Z",
-            img_url: "https://cdn-icons-png.flaticon.com/512/21/21104.png",
+            img_url: require('../../assets/image/card1.png'),
         },
         {
             id: "02",
             type: "driving",
             no: "S****031Z",
-            img_url: "https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg",
+            img_url: require('../../assets/image/card2.png'),
         },
         {
             id: "03",
             type: "blank",
             no: "",
-            img_url: "https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg",
+            img_url: require('../../assets/image/card1.png'),
         },
     ])
     const carouselRef = useRef(null)
@@ -74,7 +74,7 @@ const Home = ({ navigation, route }) => {
                 renderItem={_renderCardItem}
                 sliderWidth={screenWidth}
                 itemWidth={screenWidth * 0.85}
-             //onSnapToItem={setCurrentCardIndex}
+            //onSnapToItem={setCurrentCardIndex}
             />
             {
                 cardList[currentCardIndex]?.type != "blank" &&
@@ -98,11 +98,11 @@ const Home = ({ navigation, route }) => {
             return (
                 <Image
                     key={item?.id}
-                    source={Card1}
+                    source={item?.img_url}
                     style={{ width: 320, height: 200, alignSelf: 'center' }}
                 />
-                
-            )           
+
+            )
         }
         return (
             <View key={item?.id} style={{ width: 320, height: 200, borderRadius: 16, backgroundColor: "#222222", justifyContent: "space-between", alignItems: "center", padding: 20 }}>
