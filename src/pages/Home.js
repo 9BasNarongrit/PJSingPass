@@ -255,13 +255,8 @@ const Home = ({ navigation, route }) => {
 
                                 <View>
                                     <TouchableOpacity style={styles.btnMenu}
-<<<<<<< HEAD
                                         onPress={() => navigation.navigate('Education')}
                                         >
-=======
-                                    //onPress={() => navigation.navigate('')}
-                                    >
->>>>>>> 04a132db1b4c642ce31622c931c2aa6613dd56ae
                                         <Icon
                                             name='file-directory'
                                             type='octicon'
@@ -274,13 +269,8 @@ const Home = ({ navigation, route }) => {
 
                                 <View>
                                     <TouchableOpacity style={styles.btnMenu}
-<<<<<<< HEAD
                                         onPress={() => navigation.navigate('Property')}
                                         >
-=======
-                                    //onPress={() => navigation.navigate('')}
-                                    >
->>>>>>> 04a132db1b4c642ce31622c931c2aa6613dd56ae
                                         <Icon
                                             name='file-directory'
                                             type='octicon'
@@ -293,13 +283,8 @@ const Home = ({ navigation, route }) => {
 
                                 <View>
                                     <TouchableOpacity style={styles.btnMenu}
-<<<<<<< HEAD
                                         onPress={() => navigation.navigate('RegistersOE')}
                                         >
-=======
-                                    //onPress={() => navigation.navigate('')}
-                                    >
->>>>>>> 04a132db1b4c642ce31622c931c2aa6613dd56ae
                                         <Icon
                                             name='file-directory'
                                             type='octicon'
